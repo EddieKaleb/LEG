@@ -10,6 +10,7 @@ import java.util.List;
 import conexao.ConnectionFactory;
 import entidades.Cargo;
 import entidades.Cargo;
+import entidades.Cargo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -60,6 +61,22 @@ public class CargoDAO {
 			
 		}
 		if(cargos.size() <= 0)
+			return  true;
+		return false;
+	}
+	public boolean existe(String sql, String id) throws SQLException{
+		List<Cargo> cargos = new ArrayList<Cargo>();
+		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
+		stmt.setString(1, id);
+		ResultSet rs = stmt.executeQuery();
+		Cargo u = new Cargo();
+		while (rs.next()) {
+			if(rs.getString("codCargo") != null){
+				u.setCodigo(rs.getString("codCargo"));
+				cargos.add(u);
+			}
+		}
+		if(cargos.size() > 0)
 			return  true;
 		return false;
 	}

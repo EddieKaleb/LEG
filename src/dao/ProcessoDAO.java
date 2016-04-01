@@ -11,6 +11,8 @@ import java.util.List;
 import conexao.ConnectionFactory;
 import entidades.Processo;
 import entidades.Processo;
+import entidades.Processo;
+import entidades.Processo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ui.LoginController;

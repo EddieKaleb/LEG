@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import conexao.ConnectionFactory;
 import entidades.Curso;
 import entidades.Curso;
@@ -64,6 +66,22 @@ public class CursoDAO {
 			
 		}
 		if(cursos.size() <= 0)
+			return  true;
+		return false;
+	}
+	public boolean existe(String sql, String id) throws SQLException{
+		List<Curso> cursos = new ArrayList<Curso>();
+		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
+		stmt.setString(1, id);
+		ResultSet rs = stmt.executeQuery();
+		Curso u = new Curso();
+		while (rs.next()) {
+			if(rs.getString("codCurso") != null){
+				u.setCodigo(rs.getString("codCurso"));
+				cursos.add(u);
+			}
+		}
+		if(cursos.size() > 0)
 			return  true;
 		return false;
 	}

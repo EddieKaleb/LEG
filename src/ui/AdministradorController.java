@@ -72,8 +72,7 @@ public class AdministradorController {
 		tableviewDeclaracao.setVisible(false);
 		if(cD.tabelaVazia("SELECT * FROM curso")){
 			iCadastroDiscente.setDisable(true);
-			iCurso.setDisable(true);
-			
+			iCurso.setDisable(true);			
 		}
 		if(carD.tabelaVazia("SELECT * FROM cargo")){
 			iCadastroServidor.setDisable(true);
@@ -85,9 +84,7 @@ public class AdministradorController {
 		if(pD.tabelaVazia("SELECT * FROM processo WHERE statusProcesso=?"))
 			iAtualizarProcesso.setDisable(true);
 		if(dD.tabelaVazia("SELECT * FROM declaracao WHERE statusDeclaracao=?"))
-			iAtualizarDeclaracao.setDisable(true);
-		
-		
+			iAtualizarDeclaracao.setDisable(true);		
 		startTableViewUsuario();
 		startTableViewCurso();
 		startTableViewCargo();

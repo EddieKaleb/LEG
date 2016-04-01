@@ -27,6 +27,7 @@ public class AcoesProcesso {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
 	public void altera(Processo p) throws RegexException {
 		String sql = "UPDATE leg.processo SET statusProcesso=?, dataProcesso=? WHERE codProcesso=?";
 		try {

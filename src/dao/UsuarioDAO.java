@@ -11,6 +11,7 @@ import conexao.ConnectionFactory;
 import entidades.Administrador;
 import entidades.Usuario;
 import entidades.Usuario;
+import entidades.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -112,6 +113,21 @@ public class UsuarioDAO {
 			return  true;
 		return false;
 	}
-	
+	public boolean existe(String sql, String id) throws SQLException{
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
+		stmt.setString(1, id);
+		ResultSet rs = stmt.executeQuery();
+		Usuario u = new Usuario();
+		while (rs.next()) {
+			if(rs.getString("codUsuario") != null){
+				u.setCodigo(rs.getString("codUsuario"));
+				usuarios.add(u);
+			}
+		}
+		if(usuarios.size() > 0)
+			return  true;
+		return false;
+	}
 
 }
