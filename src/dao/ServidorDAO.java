@@ -2,8 +2,13 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import conexao.ConnectionFactory;
+import entidades.Servidor;
 import entidades.Servidor;
 
 public class ServidorDAO {
@@ -29,4 +34,17 @@ public class ServidorDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	public boolean tabelaVazia(String sql) throws SQLException{
+		List<Servidor> servidores = new ArrayList<Servidor>();
+		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			Servidor u = new Servidor();
+			if(rs.getString("codServidor") != null)
+			servidores.add(u);
+		}
+		if(servidores.size() <= 0)
+			return  true;
+		return false;
+	} 
 }

@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import conexao.ConnectionFactory;
+import entidades.Administrador;
 import entidades.Administrador;
 
 public class AdministradorDAO {
@@ -35,4 +39,17 @@ public class AdministradorDAO {
 		stmt.close();
 		return false;
 	}
+	public boolean tabelaVazia(String sql) throws SQLException{
+		List<Administrador> administradores = new ArrayList<Administrador>();
+		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			Administrador u = new Administrador();
+			if(rs.getString("codAdministrador") != null)
+			administradores.add(u);
+		}
+		if(administradores.size() <= 0)
+			return  true;
+		return false;
+	} 
 }
