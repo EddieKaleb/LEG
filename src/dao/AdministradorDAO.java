@@ -10,14 +10,26 @@ import java.util.List;
 import conexao.ConnectionFactory;
 import entidades.Administrador;
 import entidades.Administrador;
-
+/**
+ * Classe DAO do administrador
+ * @author Eddie
+ *
+ */
 public class AdministradorDAO {
 	private Connection connection;
-
+/**
+ * Construtor
+ * @throws SQLException
+ */
 	public AdministradorDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
-
+/**
+ * Método que cadastra administrador 
+ * @param a
+ * @param sql
+ * @throws SQLException
+ */
 	public void cadastra(Administrador a, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, Administrador.usuario.getCodigo());
@@ -26,6 +38,14 @@ public class AdministradorDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que verifica login do administrador
+	 * @param sql
+	 * @param login
+	 * @param senha
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean login(String sql, String login, String senha) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
 		stmt.setString(1, login);
@@ -39,6 +59,12 @@ public class AdministradorDAO {
 		stmt.close();
 		return false;
 	}
+	/**
+	 * Método que verifica se tabela do administrador está vazia
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Administrador> administradores = new ArrayList<Administrador>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

@@ -16,13 +16,26 @@ import entidades.Processo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ui.LoginController;
-
+/**
+ * Classe DAO de Processo
+ * @author Eddie
+ *
+ */
 public class ProcessoDAO {
 	private Connection connection;
-
+/**
+ * Construtor da classe
+ * @throws SQLException
+ */
 	public ProcessoDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
+	/**
+	 * Método que cadastra processo
+	 * @param p
+	 * @param sql
+	 * @throws SQLException
+	 */
 
 	public void cadastro(Processo p, String sql) throws SQLException {
 		java.sql.Date data = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
@@ -35,6 +48,12 @@ public class ProcessoDAO {
 			stmt.execute();
 			stmt.close();
 	}
+	/**
+	 * Método que altera processo
+	 * @param p
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void altera(Processo p, String sql) throws SQLException {
 		java.sql.Date data = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -44,6 +63,12 @@ public class ProcessoDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que retorna lista de processos
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Processo> lista(String sql) throws SQLException {
 		ObservableList<Processo> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -63,6 +88,12 @@ public class ProcessoDAO {
 		stmt.close();
 		return data;
 	}
+	/**
+	 * Método que retorna lista com todos os processos
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Processo> listaTodos(String sql) throws SQLException {
 		ObservableList<Processo> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -81,6 +112,12 @@ public class ProcessoDAO {
 		stmt.close();
 		return data;
 	}
+	/**
+	 * Método que verifica se tabela processo está vazia 
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Processo> processos = new ArrayList<Processo>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import entidades.Cargo;
 import excecoes.RegexException;
-
+/**
+ * Classe que valida dados do Cargo
+ * @author Eddie
+ *
+ */
 public class ValidacaoCargo {
 	private String padraoCodigo;
 	private String padraoNome;

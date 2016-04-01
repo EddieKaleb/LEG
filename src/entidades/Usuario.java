@@ -17,8 +17,6 @@ public class Usuario {
     private String telefone;
     private String email;
     private int tipo;
-	
-	
 
 	/**
 	 * Getters e setters da classe Usuario.

@@ -6,14 +6,23 @@ import dao.UsuarioDAO;
 import entidades.Usuario;
 import excecoes.RegexException;
 import util.ValidacaoUsuario;
-
+/**
+ * Classe com métodos de ação do Usuário
+ * @author Eddie
+ *
+ */
 public class AcoesUsuario {
 	private ValidacaoUsuario validacao;
-
+/**
+ * Construtor
+ */
 	public AcoesUsuario() {
 		validacao = new ValidacaoUsuario();
 	}
-
+/**
+ * Método que cadastra Usuário através da classe DAO
+ * @param u
+ */
 	public void cadastro(Usuario u) {
 		String sql = "INSERT INTO leg.usuario" + "(codUsuario,nome,dtNascimento,cpf,endereco,telefone,email,tipo)"
 				+ "VALUES(?,?,?,?,?,?,?,?)";
@@ -27,7 +36,10 @@ public class AcoesUsuario {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+/**
+ * Método que remove usuário através de sua classe DAO
+ * @param u
+ */
 	public void remove(Usuario u) {
 		String sql = "DELETE FROM leg.usuario WHERE codUsuario=?";
 		String sql2 = "SELECT * FROM leg.usuario WHERE codUsuario=? AND (tipo=1 OR tipo=2)";
@@ -46,7 +58,13 @@ public class AcoesUsuario {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "SQL", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+/**
+ * Método que verifica se login e senha do usuário estão corretos
+ * @param login
+ * @param senha
+ * @param opcao
+ * @return
+ */
 	public static boolean login(String login, String senha, int opcao) {
 		String sql = "SELECT * FROM leg.usuario WHERE codUsuario=? AND dtNascimento=? AND tipo=?";
 		boolean logado = false;

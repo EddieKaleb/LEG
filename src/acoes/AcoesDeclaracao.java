@@ -6,13 +6,24 @@ import dao.DeclaracaoDAO;
 import entidades.Declaracao;
 import excecoes.RegexException;
 import util.ValidacaoDeclaracao;
-
+/**
+ * Classe com métodos de ação da Declaração
+ * @author Eddie
+ *
+ */
 public class AcoesDeclaracao {
 	private ValidacaoDeclaracao validacao;
-
+	/**
+	 * Construtor
+	 */
 	public AcoesDeclaracao() {
 		validacao = new ValidacaoDeclaracao();
 	}
+	/**
+	 * Método que cadastra uma declaração através da classe DAO
+	 * @param d
+	 * @throws RegexException
+	 */
 
 	public void cadastro(Declaracao d) throws RegexException{
 		String sql = "INSERT INTO leg.declaracao" + "(codSolicitante,statusDeclaracao,dataDeclaracao"
@@ -26,6 +37,11 @@ public class AcoesDeclaracao {
 			JOptionPane.showMessageDialog(null,e.getMessage(),"SQL", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	/**
+	 * Método que altera declaração através da classe DAO
+	 * @param d
+	 * @throws RegexException
+	 */
 	public void altera(Declaracao d) throws RegexException {
 		String sql = "UPDATE leg.declaracao SET statusDeclaracao=?, dataDeclaracao=? WHERE codDeclaracao=?";
 		try {
@@ -36,6 +52,10 @@ public class AcoesDeclaracao {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "SQL", JOptionPane.ERROR_MESSAGE);
 		} 
 	}
+	/**
+	 * Método que lista declarações
+	 * @param d
+	 */
 	public void lista(Declaracao d) {
 		String sql = "SELECT * FROM leg.declaracao";
 		try {

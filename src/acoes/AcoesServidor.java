@@ -6,14 +6,23 @@ import dao.ServidorDAO;
 import entidades.Servidor;
 import excecoes.RegexException;
 import util.ValidacaoServidor;
-
+/**
+ * Classe com métodos de ação do Servidor
+ * @author Eddie
+ *
+ */
 public class AcoesServidor {
 	private ValidacaoServidor validacao;
-
+/**
+ * Construtor 
+ */
 	public AcoesServidor() {
 		validacao = new ValidacaoServidor();
 	}
-
+/**
+ * Método que cadastra servidor através da classe DAO
+ * @param s
+ */
 	public void cadastro(Servidor s) {
 		String sql = "INSERT INTO leg.servidor" + "(codServidor,cargaHoraria,grau,codCargoServidor)"
 				+ "VALUES(?,?,?,?)";
@@ -29,7 +38,10 @@ public class AcoesServidor {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+/**
+ * Método que remove servidor através da classe DAO
+ * @param s
+ */
 	public static void remove(Servidor s) {
 		String sql = "DELETE FROM leg.usuario WHERE codUsuario=?";
 		try {

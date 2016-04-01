@@ -14,13 +14,26 @@ import entidades.Declaracao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ui.LoginController;
-
+/**
+ * Classe DAO de Declaração
+ * @author Eddie
+ *
+ */
 public class DeclaracaoDAO {
 	private Connection connection;
-
+/**
+ * Construtor
+ * @throws SQLException
+ */
 	public DeclaracaoDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
+	/**
+	 * Método que cadastra declaração
+	 * @param d
+	 * @param sql
+	 * @throws SQLException
+	 */
 
 	public void cadastro(Declaracao d, String sql) throws SQLException {
 		java.sql.Date data = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
@@ -33,6 +46,12 @@ public class DeclaracaoDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que altera Declaração
+	 * @param d
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void altera(Declaracao d, String sql) throws SQLException {
 		java.sql.Date data = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -42,6 +61,12 @@ public class DeclaracaoDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que retorna lista de declaração
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Declaracao> lista(String sql) throws SQLException {
 		ObservableList<Declaracao> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -62,6 +87,12 @@ public class DeclaracaoDAO {
 		stmt.close();
 		return data;
 	}
+	/**
+	 * Método que retorna lista com todas as declarações
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Declaracao> listaTodos(String sql) throws SQLException {
 		ObservableList<Declaracao> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

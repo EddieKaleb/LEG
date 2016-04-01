@@ -6,14 +6,23 @@ import dao.DiscenteDAO;
 import entidades.Discente;
 import excecoes.RegexException;
 import util.ValidacaoDiscente;
-
+/**
+ * Classe com métodos de ação do Discente
+ * @author Eddie
+ *
+ */
 public class AcoesDiscente {
 	private ValidacaoDiscente validacao;
-
+/**
+ * Construtor
+ */
 	public AcoesDiscente() {
 		validacao = new ValidacaoDiscente();
 	}
-
+/**
+ * Método que cadastra Discente através da Classe DAO
+ * @param d
+ */
 	public void cadastro(Discente d) {
 		String sql = "INSERT INTO leg.discente" + "(codDiscente,semestre, codCursoDiscente)" + "VALUES(?,?,?)";
 		try {
@@ -27,6 +36,10 @@ public class AcoesDiscente {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	/**
+	 * Método que remove Discente através da classe DAO
+	 * @param d
+	 */
 	public void remove(Discente d) {
 		String sql = "DELETE FROM leg.usuario WHERE codUsuario=?";
 		try {

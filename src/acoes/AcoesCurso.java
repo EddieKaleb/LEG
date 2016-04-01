@@ -1,25 +1,29 @@
 package acoes;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 import dao.CursoDAO;
 import entidades.Curso;
-import entidades.Curso;
 import excecoes.RegexException;
 import util.ValidacaoCurso;
+/**
+ * Classe com métodos de ação do curso
+ * @author Eddie
+ *
+ */
 
 public class AcoesCurso {
 	private ValidacaoCurso validacao;
-
+	/**
+	 * Construtor
+	 */
 	public AcoesCurso() {
 		validacao = new ValidacaoCurso();
 	}
-
+	/**
+	 * Método que cadastra um curso novo através da classe DAO
+	 * @param c
+	 */
 	public void cadastro(Curso c) {
 		String sql = "INSERT INTO leg.curso(codCurso,nome,ementa,cargaHoraria,descricao) VALUES(?,?,?,?,?)";
 		try {
@@ -34,7 +38,10 @@ public class AcoesCurso {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	/**
+	 * Classe que remove um curso através da classe DAO
+	 * @param c
+	 */
 	public void remove(Curso c) {
 		String sql = "DELETE FROM leg.curso WHERE codCurso=?";
 		String sql2 = "SELECT * FROM leg.curso WHERE codCurso=?";

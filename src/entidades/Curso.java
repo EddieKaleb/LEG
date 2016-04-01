@@ -2,18 +2,26 @@ package entidades;
 
 /**
  * Classe Curso que está relacionada com um Discente matriculado
+ * @author Eddie
  */
 public class Curso {
+	/**
+	 * Atributos da classe
+	 */
     private String nome;
     private String codigo;
     private String ementa;
     private String cargaHoraria;
     private String descricao;
-    
+    /**
+     * Construtores da classe
+     */
     public Curso(){
     	
     }
-  
+    /**
+     * Getters e setters da classe
+     */
     public String getNome() {
         return nome;
     }

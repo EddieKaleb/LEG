@@ -1,21 +1,27 @@
 package entidades;
-
-
 /**
  * Classe Declaracao com os seus respectivos atributos
+ * @author Eddie
  */
 public class Declaracao {
+	/**
+	 * Atributos da classe
+	 */
     private String codigo;
     private String codigoSol;
     private String data;
     private String status;
     private String tipo;
     private String descricao;
-    
+    /**
+     * Contrutores da classe
+     */
     public Declaracao(){
     	
     }
-
+    /**
+     *Getters e setters da classe 
+     */
     public String getCodigo() {
         return codigo;
     }

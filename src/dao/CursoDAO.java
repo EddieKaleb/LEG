@@ -14,14 +14,26 @@ import entidades.Curso;
 import entidades.Curso;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/**
+ * Classe DAO de Curso
+ * @author Eddie
+ *
+ */
 public class CursoDAO {
 	private Connection connection;
-
+/**
+ * Construtor
+ * @throws SQLException
+ */
 	public CursoDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
-	
+	/**
+	 * Método que cadastra curso
+	 * @param c
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void cadastra(Curso c, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, c.getCodigo());
@@ -32,12 +44,24 @@ public class CursoDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que remove curso
+	 * @param c
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void remove(Curso c, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, c.getCodigo());
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que retorna lista de cursos 
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Curso> lista(String sql) throws SQLException {
 		ObservableList<Curso> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -55,6 +79,12 @@ public class CursoDAO {
 		stmt.close();
 		return data;
 	}
+	/**
+	 * Método que verifica se tabela curso está vazia ou não
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Curso> cursos = new ArrayList<Curso>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -69,6 +99,13 @@ public class CursoDAO {
 			return  true;
 		return false;
 	}
+	/**
+	 * Método que verifica se tabela curso existe
+	 * @param sql
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean existe(String sql, String id) throws SQLException{
 		List<Curso> cursos = new ArrayList<Curso>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

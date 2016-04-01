@@ -6,14 +6,23 @@ import dao.ProcessoDAO;
 import entidades.Processo;
 import excecoes.RegexException;
 import util.ValidacaoProcesso;
-
+/**
+ * Classe com métodos de ação do Processo
+ * @author Eddie
+ *
+ */
 public class AcoesProcesso {
 	private ValidacaoProcesso validacao;
-
+/**
+ * Construtor
+ */
 	public AcoesProcesso() {
 		validacao = new ValidacaoProcesso();
 	}
-
+/**
+ * Método que cadastra processo através da classe DAO
+ * @param p
+ */
 	public void cadastro(Processo p) {
 		String sql = "INSERT INTO leg.processo(codSolicitante,tipoProcesso,descricaoProcesso,"
 				+ "statusProcesso,dataProcesso) VALUES (?,?,?,?,?)";
@@ -27,7 +36,11 @@ public class AcoesProcesso {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+/**
+ * Método que atualiza declaração através da classe DAO
+ * @param p
+ * @throws RegexException
+ */
 	public void altera(Processo p) throws RegexException {
 		String sql = "UPDATE leg.processo SET statusProcesso=?, dataProcesso=? WHERE codProcesso=?";
 		try {

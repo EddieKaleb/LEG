@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import entidades.Processo;
 import excecoes.RegexException;
-
+/**
+ * Classe que valida dados do Processo
+ * @author Eddie
+ *
+ */
 public class ValidacaoProcesso {
 
 	private String padraoTipo;

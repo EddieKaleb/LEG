@@ -1,13 +1,20 @@
 package entidades;
-
+/**
+ * Classe objeto Discente
+ * @author Eddie
+ */
 public class Discente extends Usuario {
-
+/**
+ * Atributos da classe
+ */
 	private String semestre;
 	public static Usuario usuario;
 	public static Curso curso;
 	public static Processo processo;
 	public static Declaracao declaracao;
-
+/**
+ * Contrutores da classe
+ */
 	public Discente() {
 
 	}
@@ -30,7 +37,9 @@ public class Discente extends Usuario {
 		Discente.usuario = u;
 		Discente.declaracao = d;
 	}
-
+/**
+ * Getters e setters da classe
+ */
 	public String getSemestre() {
 		return semestre;
 	}

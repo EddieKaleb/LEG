@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import entidades.Servidor;
 import excecoes.RegexException;
-
+/**
+ * Classe que valida dados do Servidor
+ * @author Eddie
+ *
+ */
 public class ValidacaoServidor{
 	
 	private String padraoCargaHoraria;

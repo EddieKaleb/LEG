@@ -2,18 +2,26 @@ package entidades;
 
 /**
  * 
- * Classe Cargo que pode é ocupada por um Servidor específico
- *
+ * Classe objeto de Cargo que é ocupada por um Servidor
+ *@author Eddie
  */
 public class Cargo {
+	/**
+	 * Atributos da classe
+	 */
     private String codigo;
     private String nome;
     private String descricao;
     private String ramal;
-
+    /**
+     * Construtores da classe
+     */
     public Cargo(){
     	
     }
+    /**
+     * Getters e setters da classe
+     */
     public String getRamal() {
         return ramal;
     }

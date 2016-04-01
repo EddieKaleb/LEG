@@ -14,14 +14,26 @@ import entidades.Usuario;
 import entidades.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/**
+ * Classe DAO de Usuário
+ * @author Eddie
+ *
+ */
 public class UsuarioDAO {
 	private Connection connection;
-
+/**
+ * Construtor
+ * @throws SQLException
+ */
 	public UsuarioDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
-
+/**
+ * Método que cadastra um Usuário
+ * @param u
+ * @param sql
+ * @throws SQLException
+ */
 	public void add(Usuario u, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, u.getCodigo());
@@ -35,6 +47,12 @@ public class UsuarioDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que remove usuário(Servidor ou Discente)
+	 * @param u
+	 * @param sql
+	 * @throws SQLException
+	 */
 
 	public void remove(Usuario u, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -42,6 +60,12 @@ public class UsuarioDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Classe que retorna lista de usuarios
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 
 	public ObservableList<Usuario> lista(String sql) throws SQLException {
 		ObservableList<Usuario> data = FXCollections.observableArrayList();
@@ -63,7 +87,15 @@ public class UsuarioDAO {
 		stmt.close();
 		return data;
 	}
-
+/**
+ * Método que verifica se login do usário está correto
+ * @param sql
+ * @param login
+ * @param senha
+ * @param opcao
+ * @return
+ * @throws SQLException
+ */
 	public boolean login(String sql, String login, String senha, int opcao) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
 		stmt.setString(1, login);
@@ -79,7 +111,12 @@ public class UsuarioDAO {
 		stmt.close();
 		return false;
 	}
-
+/**
+ * Método que retorna dados do Usuário (Discente ou Administrador)
+ * @param login
+ * @return
+ * @throws SQLException
+ */
 	public Usuario meusDados(String login) throws SQLException {
 		String sql = "SELECT * FROM Usuario WHERE codUsuario=?";
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -99,6 +136,12 @@ public class UsuarioDAO {
 		stmt.close();
 		return u;
 	}
+	/**
+	 * Método que verifica se tabela usuário está vazia
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -113,6 +156,13 @@ public class UsuarioDAO {
 			return  true;
 		return false;
 	}
+	/**
+	 * 	Método que verifica se tabela Usuário existe 
+	 * @param sql
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean existe(String sql, String id) throws SQLException{
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

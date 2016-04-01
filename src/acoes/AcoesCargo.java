@@ -6,13 +6,23 @@ import dao.CargoDAO;
 import entidades.Cargo;
 import excecoes.RegexException;
 import util.ValidacaoCargo;
-
+/**
+ * Classe com métodos de ação do Cargo
+ * @author Eddie
+ *
+ */
 public class AcoesCargo {
 	private ValidacaoCargo validacao;
-
+	/**
+	 * Construtor
+	 */
 	public AcoesCargo() {
 		validacao = new ValidacaoCargo();
 	}
+	/**
+	 * Método que cadastra cargo utilizando a classe DAO
+	 * @param c
+	 */
 
 	public void cadastro(Cargo c) {
 		String sql = "INSERT INTO leg.cargo" + "(codCargo,nome,ramal,descricao)" + "VALUES(?,?,?,?)";
@@ -28,7 +38,10 @@ public class AcoesCargo {
 			JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO DE ENTRADA", JOptionPane.ERROR_MESSAGE);
 		}
 	}
-
+	/**
+	 * Método que remove Cargo utilizando a classe DAO
+	 * @param c
+	 */
 	public void remove(Cargo c) {
 		String sql = "DELETE FROM leg.cargo WHERE codCargo=?";
 		String sql2 = "SELECT * FROM leg.cargo WHERE codCargo=?";

@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import entidades.Discente;
 import excecoes.RegexException;
-
+/**
+ * Classe que valida dados do discente
+ * @author Eddie
+ *
+ */
 public class ValidacaoDiscente {
 	private String padraoSemestre;
 	

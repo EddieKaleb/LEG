@@ -13,12 +13,25 @@ import entidades.Cargo;
 import entidades.Cargo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
+/**
+ * Classe DAO de Cargo
+ * @author Eddie
+ */
 public class CargoDAO {
 	private Connection connection;
+	/**
+	 * Construtor
+	 * @throws SQLException
+	 */
 	public CargoDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
+	/**
+	 * Método que cadastra Cargo
+	 * @param c
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void cadastra(Cargo c, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, c.getCodigo());
@@ -28,12 +41,24 @@ public class CargoDAO {
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que remove Cargo
+	 * @param c
+	 * @param sql
+	 * @throws SQLException
+	 */
 	public void remove(Cargo c, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, c.getCodigo());
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que retorna lista de usuários
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public ObservableList<Cargo> lista(String sql) throws SQLException {
 		ObservableList<Cargo> data = FXCollections.observableArrayList();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -50,6 +75,12 @@ public class CargoDAO {
 		stmt.close();
 		return data;
 	}
+	/**
+	 *  Método que verifica se tabela de cargo está vazia 
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Cargo> cargos = new ArrayList<Cargo>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);
@@ -64,6 +95,13 @@ public class CargoDAO {
 			return  true;
 		return false;
 	}
+	/**
+	 * Método que verifica se tabela do Cargo existe
+	 * @param sql
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean existe(String sql, String id) throws SQLException{
 		List<Cargo> cargos = new ArrayList<Cargo>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

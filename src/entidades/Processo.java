@@ -1,20 +1,28 @@
 package entidades;
 
 /**
- * Classe Processo com seus respectivos atributos
+ * Classe objetos Processo
  */
 public class Processo {
+	/**
+	 * Atributos da classe
+	 */
     private String codigo;
     private String codigoSol;
 	private String status;
 	private String data;
 	private String tipo;
     private String descricao;
-    
+    /**
+     * Construtor da classe
+     */
     public Processo(){
     	
     }
-
+    /**
+     * Getters e setters da classe
+     * 
+     */
     public String getDescricao() {
         return descricao;
     }

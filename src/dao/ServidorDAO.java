@@ -10,13 +10,26 @@ import java.util.List;
 import conexao.ConnectionFactory;
 import entidades.Servidor;
 import entidades.Servidor;
-
+/**
+ * Classe DAO de Servidor
+ * @author Eddie
+ *
+ */
 public class ServidorDAO {
 	private Connection connection;
-
+/**
+ * Construtor
+ * @throws SQLException
+ */
 	public ServidorDAO() throws SQLException {
 		this.connection = (Connection) new ConnectionFactory().getConnection();
 	}
+	/**
+	 * Método que cadastra Servidor
+	 * @param s
+	 * @param sql
+	 * @throws SQLException
+	 */
 
 	public void cadastro(Servidor s, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
@@ -27,13 +40,24 @@ public class ServidorDAO {
 		stmt.execute();
 		stmt.close();
 	}
-
+/**
+ * Método que remove Servidor
+ * @param s
+ * @param sql
+ * @throws SQLException
+ */
 	public void remove(Servidor s, String sql) throws SQLException {
 		PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		stmt.setString(1, Servidor.usuario.getCodigo());
 		stmt.execute();
 		stmt.close();
 	}
+	/**
+	 * Método que verifica se tabela Servidor está vazia
+	 * @param sql
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean tabelaVazia(String sql) throws SQLException{
 		List<Servidor> servidores = new ArrayList<Servidor>();
 		PreparedStatement stmt = (PreparedStatement) this.connection.prepareStatement(sql);

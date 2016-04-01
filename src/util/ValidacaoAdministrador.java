@@ -5,7 +5,11 @@ import java.util.regex.Pattern;
 
 import entidades.Administrador;
 import excecoes.RegexException;
-
+/**
+ * Classe que valida dados do Administrador
+ * @author Eddie
+ *
+ */
 public class ValidacaoAdministrador {
 	private String padraoLogin;
 	private String padraoSenha;
