@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="ui.ServidorController">
+  <children>
+    <ImageView fitHeight="533.3333333333334" fitWidth="800.0" layoutX="0.0" layoutY="0.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+        <Image url="@../../lib/Servidor.png" />
+      </image>
+    </ImageView>
+    <Button fx:id="btnAbrirProcesso" layoutX="80.0" layoutY="182.0" mnemonicParsing="false" onAction="#clickBtnAbrirProcesso" prefHeight="159.0" prefWidth="125.0" style="-fx-background-color: transparent;" />
+    <Button fx:id="btnMeusProcessos" layoutX="321.0" layoutY="149.0" mnemonicParsing="false" onAction="#clickBtnMeusProcessos" prefHeight="193.0" prefWidth="138.0" style="-fx-background-color: transparent;" />
+    <Button fx:id="btnMeusDados" layoutX="578.0" layoutY="190.0" mnemonicParsing="false" onAction="#clickBtnMeusDados" prefHeight="146.0" prefWidth="151.0" style="-fx-background-color: transparent;" />
+    <Button fx:id="btnVoltarLogin" layoutX="15.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickBtnVoltarLogin" prefHeight="63.0" prefWidth="83.0" style="-fx-background-color: transparent;" />
+ 	<Button fx:id="btnVoltar" layoutX="15.0" layoutY="21.0" mnemonicParsing="false" onAction="#clickBtnVoltar" prefHeight="63.0" prefWidth="83.0" style="-fx-background-color: transparent;" />
+ 	<TableView fx:id="tableviewProcesso" layoutX="200.0" layoutY="28.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <columns>
+            <TableColumn fx:id="clm1" prefWidth="88.06686401367188" text="Cod." />
+            <TableColumn fx:id="clm2" prefWidth="94.88150024414062" text="Cod. Solicitante" />
+            <TableColumn fx:id="clm3" prefWidth="67.4501953125" text="Status" />
+            <TableColumn fx:id="clm4" prefWidth="102.0" text="Data" />
+            <TableColumn fx:id="clm5" prefWidth="103.0" text="Tipo" />
+            <TableColumn fx:id="clm6" prefWidth="114.86676025390625" text="Descrição" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+  </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.OpcoesLoginController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../lib/OpcoesMenu.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnDiscente" layoutX="80.0" layoutY="209.0" mnemonicParsing="false" onAction="#clickBtnD" prefHeight="123.0" prefWidth="130.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btnServidor" layoutX="240.0" layoutY="209.0" mnemonicParsing="false" onAction="#clickBtnS" prefHeight="123.0" prefWidth="130.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="btnAdministrador" layoutX="404.0" layoutY="209.0" mnemonicParsing="false" onAction="#clickBtnA" prefHeight="123.0" prefWidth="195.0" style="-fx-background-color: transparent;" />
+      <Button layoutX="623.0" layoutY="212.0" mnemonicParsing="false"  onAction="#clickBtnSair"  prefHeight="123.0" prefWidth="99.0" style="-fx-background-color: transparent;" />
+   </children>
+</AnchorPane>

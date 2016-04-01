@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AdministradorController">
+   <children>
+      <ImageView fitHeight="530.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../lib/Fundo.png" />
+         </image>
+      </ImageView>
+      <MenuBar AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+            <Menu mnemonicParsing="false" text="Exibir">
+               <items>
+                  <MenuItem fx:id="iServidores" mnemonicParsing="false" onAction="#tableViewServidores" text="Servidores" />
+                  <MenuItem fx:id="iDiscentes" mnemonicParsing="false" onAction="#tableViewDiscentes" text="Discentes" />
+                  <MenuItem fx:id="iCursos" mnemonicParsing="false" onAction="#tableViewCursos" text="Cursos" />
+                  <MenuItem fx:id="iCargos" mnemonicParsing="false" onAction="#tableViewCargos" text="Cargos" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="Cadastrar">
+            <items>
+              <MenuItem fx:id="iCadastroServidor" mnemonicParsing="false" onAction="#cadastroServidor" text="Servidor" />
+                  <MenuItem fx:id="iCadastroDiscente" mnemonicParsing="false" onAction="#cadastroDiscente" text="Discente" />
+                  <MenuItem fx:id="iCadastroAdministrador" mnemonicParsing="false" onAction="#cadastroAdministrador" text="Administrador" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="iCadastroCurso" mnemonicParsing="false" onAction="#cadastroCurso" text="Curso" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="iCadastroCargo" mnemonicParsing="false" onAction="#cadastroCargo" text="Cargo" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Remover">
+               <items>
+                  <MenuItem fx:id="iServidorDiscente" mnemonicParsing="false" onAction="#removerUsuario" text="Servidor/Discente" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="iCurso" mnemonicParsing="false" onAction="#removerCurso" text="Curso" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="iCargo" mnemonicParsing="false" onAction="#removerCargo" text="Cargo" />
+               </items></Menu>
+            <Menu mnemonicParsing="false" text="Processos">
+               <items>
+              <MenuItem fx:id="iExibirProcessos" mnemonicParsing="false" onAction="#exibirProcessos" text="Exibir disponíveis" />
+                  <MenuItem fx:id="iAtualizarProcesso" mnemonicParsing="false" onAction="#atualizarProcesso" text="Atualizar status" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Declarações">
+               <items>
+                  <MenuItem fx:id="iExibirDeclaracoes" mnemonicParsing="false" onAction="#exibirDeclaracoes" text="Exibir disponíveis" />
+                  <MenuItem fx:id="iAtualizarDeclaracao" mnemonicParsing="false" onAction="#atualizarDeclaracao" text="Atualizar status" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Opções">
+               <items>
+                  <MenuItem fx:id="iInicio" mnemonicParsing="false" onAction="#inicio" text="Início" />
+                  <MenuItem fx:id="iSair" mnemonicParsing="false" onAction="#sair" text="Sair" />
+               </items></Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="tableviewUsuario" layoutX="200.0" layoutY="28.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+        <columns>
+            <TableColumn fx:id="clmCodUsuario" prefWidth="88.06686401367188" text="Mat." />
+            <TableColumn fx:id="clmNome" prefWidth="94.88150024414062" text="Nome" />
+            <TableColumn fx:id="clmDtNascimento" prefWidth="67.4501953125" text="Dt Nasc." />
+            <TableColumn fx:id="clmCpf" prefWidth="102.0" text="CPF" />
+            <TableColumn fx:id="clmEndereco" prefWidth="103.0" text="Endereço" />
+            <TableColumn fx:id="clmTelefone" prefWidth="114.86676025390625" text="Telefone" />
+            <TableColumn fx:id="clmEmail" prefWidth="116.0" text="Email" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="tableviewCurso" layoutX="10.0" layoutY="38.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="clmCodCurso" prefWidth="88.06686401367188" text="Cód." />
+            <TableColumn fx:id="clmNomeCurso" prefWidth="140.47650146484375" text="Nome" />
+            <TableColumn fx:id="clmEmentaCurso" prefWidth="211.08892822265625" text="Ementa" />
+            <TableColumn fx:id="clmCargaHorariaCurso" prefWidth="58.65606689453125" text="C. H." />
+            <TableColumn fx:id="clmDescricaoCurso" prefWidth="226.45013427734375" text="Descrição" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tableviewCargo" layoutX="10.0" layoutY="38.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="clmCodCargo" prefWidth="88.06686401367188" text="Cód." />
+            <TableColumn fx:id="clmNomeCargo" prefWidth="183.8095703125" text="Nome" />
+            <TableColumn fx:id="clmRamal" prefWidth="101.2857666015625" text="Ramal" />
+            <TableColumn fx:id="clmDescricaoCargo" prefWidth="409.2935791015625" text="Descrição" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tableviewProcesso" layoutX="200.0" layoutY="28.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+        <columns>
+            <TableColumn fx:id="clm1" prefWidth="88.06686401367188" text="Cod." />
+            <TableColumn fx:id="clm2" prefWidth="94.88150024414062" text="Cod. Solicitante" />
+            <TableColumn fx:id="clm3" prefWidth="67.4501953125" text="Status" />
+            <TableColumn fx:id="clm4" prefWidth="102.0" text="Data" />
+            <TableColumn fx:id="clm5" prefWidth="103.0" text="Tipo" />
+            <TableColumn fx:id="clm6" prefWidth="114.86676025390625" text="Descrição" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <TableView fx:id="tableviewDeclaracao" layoutX="200.0" layoutY="28.0" prefHeight="502.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+        <columns>
+            <TableColumn fx:id="clm1_2" prefWidth="88.06686401367188" text="Cod." />
+            <TableColumn fx:id="clm2_2" prefWidth="94.88150024414062" text="Cod. Solicitante" />
+            <TableColumn fx:id="clm3_2" prefWidth="67.4501953125" text="Status" />
+            <TableColumn fx:id="clm4_2" prefWidth="102.0" text="Data" />
+            <TableColumn fx:id="clm5_2" prefWidth="103.0" text="Tipo" />
+            <TableColumn fx:id="clm6_2" prefWidth="114.86676025390625" text="Descrição" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+   </children>
+</AnchorPane>
